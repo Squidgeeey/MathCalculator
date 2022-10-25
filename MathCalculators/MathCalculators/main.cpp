@@ -1,8 +1,9 @@
 #pragma once
 #include <iostream>
 
-void MatrixTranspose(int _Matrix[4][4]);
-int MatrixDeterminant(int _Matrix[4][4]);
+void MatrixTranspose(float _Matrix[4][4]);
+int MatrixDeterminant(float _Matrix[4][4]);
+void MatrixScalar(float _Matrix[4][4], float scalar);
 
 
 
@@ -24,15 +25,88 @@ int main()
 							5, 0, 3, 2
 	};
 
-	tempMatrix[0][0] = (matrix[1][1] * matrix[2][2] * matrix[3][3])
-	
+	tempMatrix[0][0] = ((matrix[1][1] * matrix[2][2] * matrix[3][3]) + (matrix[1][2] * matrix[2][3] * matrix[3][1]) + (matrix[1][3] * matrix[2][1] * matrix[3][2])
+		- (matrix[1][3] * matrix[2][2] * matrix[3][1]) - (matrix[1][2] * matrix[2][1] * matrix[3][3]) - (matrix[1][1] * matrix[2][3] * matrix[3][2]));
+
+	tempMatrix[0][1] = -(matrix[0][1] * matrix[2][2] * matrix[3][3]) - (matrix[0][2] * matrix[2][3] * matrix[3][1]) - (matrix[0][3] * matrix[2][1] * matrix[3][2])
+		+ (matrix[0][3] * matrix[2][2] * matrix[3][1]) + (matrix[0][2] * matrix[2][1] * matrix[3][3]) + (matrix[0][1] * matrix[2][3] * matrix[3][2]);
+
+	tempMatrix[0][2] = (matrix[0][1] * matrix[1][2] * matrix[3][3]) + (matrix[0][2] * matrix[1][3] * matrix[3][1]) + (matrix[0][3] * matrix[1][1] * matrix[3][2])
+		- (matrix[0][3] * matrix[1][2] * matrix[3][1]) - (matrix[0][2] * matrix[1][1] * matrix[3][3]) - (matrix[0][1] * matrix[1][3] * matrix[3][2]);
+
+	tempMatrix[0][3] = -(matrix[0][1] * matrix[1][2] * matrix[2][3]) - (matrix[0][2] * matrix[1][3] * matrix[2][1]) - (matrix[0][3] * matrix[1][1] * matrix[2][2])
+		+ (matrix[0][3] * matrix[1][2] * matrix[2][1]) + (matrix[0][2] * matrix[1][1] * matrix[2][3]) + (matrix[0][1] * matrix[1][3] * matrix[2][2]);
+
+
+
+	tempMatrix[1][0] = -(matrix[1][0] * matrix[2][2] * matrix[3][3]) - (matrix[1][2] * matrix[2][3] * matrix[3][0]) - (matrix[1][3] * matrix[2][0] * matrix[3][2])
+		+ (matrix[1][3] * matrix[2][2] * matrix[3][0]) + (matrix[1][2] * matrix[2][0] * matrix[3][3]) + (matrix[1][0] * matrix[2][3] * matrix[3][2]);
+
+	tempMatrix[1][1] = (matrix[0][0] * matrix[2][2] * matrix[3][3]) + (matrix[0][2] * matrix[2][3] * matrix[3][0]) + (matrix[0][3] * matrix[2][0] * matrix[3][2])
+		- (matrix[0][3] * matrix[2][2] * matrix[3][0]) - (matrix[0][2] * matrix[2][0] * matrix[3][3]) - (matrix[0][0] * matrix[2][3] * matrix[3][2]);
+
+	tempMatrix[1][2] = -(matrix[0][0] * matrix[1][2] * matrix[3][3]) - (matrix[0][2] * matrix[1][3] * matrix[3][0]) - (matrix[0][3] * matrix[1][0] * matrix[3][2])
+		+ (matrix[0][3] * matrix[1][2] * matrix[3][1]) + (matrix[0][2] * matrix[1][1] * matrix[3][3]) + (matrix[0][1] * matrix[1][3] * matrix[3][2]);
+
+	tempMatrix[1][3] = (matrix[0][0] * matrix[1][2] * matrix[2][3]) + (matrix[0][2] * matrix[1][3] * matrix[2][0]) + (matrix[0][3] * matrix[1][0] * matrix[2][2])
+		- (matrix[0][3] * matrix[1][2] * matrix[2][0]) - (matrix[0][2] * matrix[1][0] * matrix[2][3]) - (matrix[0][0] * matrix[1][3] * matrix[2][2]);
+
+
+
+	tempMatrix[2][0] = (matrix[1][0] * matrix[2][1] * matrix[3][3]) + (matrix[1][1] * matrix[2][3] * matrix[3][0]) + (matrix[1][3] * matrix[2][0] * matrix[3][1])
+		- (matrix[1][3] * matrix[2][1] * matrix[3][0]) - (matrix[1][1] * matrix[2][0] * matrix[3][3]) - (matrix[1][0] * matrix[2][3] * matrix[3][1]);
+
+	tempMatrix[2][1] = -(matrix[0][0] * matrix[2][1] * matrix[3][3]) - (matrix[0][1] * matrix[2][3] * matrix[3][0]) - (matrix[0][3] * matrix[2][0] * matrix[3][1])
+		+ (matrix[0][3] * matrix[2][1] * matrix[3][0]) + (matrix[0][1] * matrix[2][0] * matrix[3][3]) + (matrix[0][0] * matrix[2][3] * matrix[3][1]);
+
+	tempMatrix[2][2] = (matrix[0][0] * matrix[1][1] * matrix[3][3]) + (matrix[0][1] * matrix[1][3] * matrix[3][0]) + (matrix[0][3] * matrix[1][0] * matrix[3][1])
+		- (matrix[0][3] * matrix[1][1] * matrix[3][0]) - (matrix[0][1] * matrix[1][0] * matrix[3][3]) - (matrix[0][0] * matrix[1][3] * matrix[3][1]);
+
+	tempMatrix[2][3] = -(matrix[0][0] * matrix[1][1] * matrix[2][3]) - (matrix[0][1] * matrix[1][3] * matrix[2][0]) - (matrix[0][3] * matrix[1][0] * matrix[2][1])
+		+ (matrix[0][3] * matrix[1][1] * matrix[2][0]) + (matrix[0][1] * matrix[1][0] * matrix[2][3]) + (matrix[0][0] * matrix[1][3] * matrix[2][1]);
+
+
+
+	tempMatrix[3][0] = -(matrix[1][0] * matrix[2][1] * matrix[3][2]) - (matrix[1][1] * matrix[2][2] * matrix[3][0]) - (matrix[1][2] * matrix[2][0] * matrix[3][1])
+		+ (matrix[1][2] * matrix[2][1] * matrix[3][0]) + (matrix[1][1] * matrix[2][0] * matrix[3][2]) + (matrix[1][0] * matrix[2][2] * matrix[3][1]);
+
+	tempMatrix[3][1] = (matrix[0][0] * matrix[2][1] * matrix[3][2]) + (matrix[0][1] * matrix[2][2] * matrix[3][0]) + (matrix[0][2] * matrix[2][0] * matrix[3][1])
+		- (matrix[0][2] * matrix[2][1] * matrix[3][0]) - (matrix[0][1] * matrix[2][0] * matrix[3][2]) - (matrix[0][0] * matrix[2][2] * matrix[3][1]);
+
+	tempMatrix[3][2] = -(matrix[0][0] * matrix[1][1] * matrix[3][2]) - (matrix[0][1] * matrix[1][2] * matrix[3][0]) - (matrix[0][2] * matrix[1][0] * matrix[3][1])
+		+ (matrix[0][2] * matrix[1][1] * matrix[3][0]) + (matrix[0][1] * matrix[1][0] * matrix[3][2]) + (matrix[0][0] * matrix[1][2] * matrix[3][1]);
+
+	tempMatrix[3][3] = (matrix[0][0] * matrix[1][1] * matrix[2][2]) + (matrix[0][1] * matrix[1][2] * matrix[2][0]) + (matrix[0][2] * matrix[1][0] * matrix[2][1])
+		- (matrix[0][2] * matrix[1][1] * matrix[2][0]) - (matrix[0][1] * matrix[1][0] * matrix[2][2]) - (matrix[0][0] * matrix[1][2] * matrix[2][1]);
+
+
+	float det = MatrixDeterminant(matrix);
+	det = 1 / det;
+
+	MatrixScalar(tempMatrix, det);
 
 	return 0;
 }
 
 
 
-void MatrixTranspose(int _Matrix[4][4])
+
+void MatrixScalar(float _Matrix[4][4], float _Scalar)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			float result;
+			result = _Matrix[i][j] * _Scalar;
+			_Matrix[i][j] = result;
+			std::cout << _Matrix[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
+};
+
+void MatrixTranspose(float _Matrix[4][4])
 {
 	float matrixTemp[4][4];
 
@@ -47,7 +121,7 @@ void MatrixTranspose(int _Matrix[4][4])
 	}
 }
 
-int MatrixDeterminant(int _Matrix[4][4])
+int MatrixDeterminant(float _Matrix[4][4])
 {
 	int determinant = 
 		_Matrix[0][3] * _Matrix[1][2] * _Matrix[2][1] * _Matrix[3][0] - _Matrix[0][2] * _Matrix[1][3] * _Matrix[2][1] * _Matrix[3][0] -
@@ -65,3 +139,62 @@ int MatrixDeterminant(int _Matrix[4][4])
 
 	return determinant;
 }
+
+/*
+
+	tempMatrix[0][0] = (matrix[1][1] * matrix[2][2] * matrix[3][3]) + (matrix[1][2] * matrix[2][3] * matrix[3][1]) + (matrix[1][3] * matrix[2][1] * matrix[3][2])
+						- (matrix[1][3] * matrix[2][2] * matrix[3][1]) - (matrix[1][2] * matrix[2][1] * matrix[3][3]) - (matrix[1][1] * matrix[2][3] * matrix[3][2]);
+
+	tempMatrix[0][1] = - (matrix[0][1] * matrix[2][2] * matrix[3][3]) - (matrix[0][2] * matrix[2][3] * matrix[3][1]) - (matrix[0][3] * matrix[2][1] * matrix[3][2])
+		 + (matrix[0][3] * matrix[2][2] * matrix[3][1]) + (matrix[0][2] * matrix[2][1] * matrix[3][3]) + (matrix[0][1] * matrix[2][3] * matrix[3][2]);
+
+	tempMatrix[0][2] = (matrix[0][1] * matrix[1][2] * matrix[3][3]) + (matrix[0][2] * matrix[1][3] * matrix[3][1]) + (matrix[0][3] * matrix[1][1] * matrix[3][2])
+		- (matrix[0][3] * matrix[1][2] * matrix[3][1]) - (matrix[0][2] * matrix[1][1] * matrix[3][3]) - (matrix[0][1] * matrix[1][3] * matrix[3][2]);
+
+	tempMatrix[0][3] = -(matrix[0][1] * matrix[1][2] * matrix[2][3]) - (matrix[0][2] * matrix[1][3] * matrix[2][1]) - (matrix[0][3] * matrix[1][1] * matrix[2][2])
+		+ (matrix[0][3] * matrix[1][2] * matrix[2][1]) + (matrix[0][2] * matrix[1][1] * matrix[2][3]) + (matrix[0][1] * matrix[1][3] * matrix[2][2]);
+
+
+
+	tempMatrix[1][0] = - (matrix[1][0] * matrix[2][2] * matrix[3][3]) - (matrix[1][2] * matrix[2][3] * matrix[3][0]) - (matrix[1][3] * matrix[2][0] * matrix[3][2])
+		+ (matrix[1][3] * matrix[2][2] * matrix[3][0]) + (matrix[1][2] * matrix[2][0] * matrix[3][3]) + (matrix[1][0] * matrix[2][3] * matrix[3][2]);
+
+	tempMatrix[1][1] = (matrix[0][0] * matrix[2][2] * matrix[3][3]) + (matrix[0][2] * matrix[2][3] * matrix[3][0]) + (matrix[0][3] * matrix[2][0] * matrix[3][2])
+		- (matrix[0][3] * matrix[2][2] * matrix[3][0]) - (matrix[0][2] * matrix[2][0] * matrix[3][3]) - (matrix[0][0] * matrix[2][3] * matrix[3][2]);
+
+	tempMatrix[1][2] = -(matrix[0][0] * matrix[1][2] * matrix[3][3]) - (matrix[0][2] * matrix[1][3] * matrix[3][0]) - (matrix[0][3] * matrix[1][0] * matrix[3][2])
+		+ (matrix[0][3] * matrix[1][2] * matrix[3][1]) + (matrix[0][2] * matrix[1][1] * matrix[3][3]) + (matrix[0][1] * matrix[1][3] * matrix[3][2]);
+
+	tempMatrix[1][3] = (matrix[0][0] * matrix[1][2] * matrix[2][3]) + (matrix[0][2] * matrix[1][3] * matrix[2][0]) + (matrix[0][3] * matrix[1][0] * matrix[2][2])
+		- (matrix[0][3] * matrix[1][2] * matrix[2][0]) - (matrix[0][2] * matrix[1][0] * matrix[2][3]) - (matrix[0][0] * matrix[1][3] * matrix[2][2]);
+
+
+
+	tempMatrix[2][0] = (matrix[1][0] * matrix[2][1] * matrix[3][3]) + (matrix[1][1] * matrix[2][3] * matrix[3][0]) + (matrix[1][3] * matrix[2][0] * matrix[3][1])
+		- (matrix[1][3] * matrix[2][1] * matrix[3][0]) - (matrix[1][1] * matrix[2][0] * matrix[3][3]) - (matrix[1][0] * matrix[2][3] * matrix[3][1]);
+
+	tempMatrix[2][1] = -(matrix[0][0] * matrix[2][1] * matrix[3][3]) - (matrix[0][1] * matrix[2][3] * matrix[3][0]) - (matrix[0][3] * matrix[2][0] * matrix[3][1])
+		+ (matrix[0][3] * matrix[2][1] * matrix[3][0]) + (matrix[0][1] * matrix[2][0] * matrix[3][3]) + (matrix[0][0] * matrix[2][3] * matrix[3][1]);
+
+	tempMatrix[2][2] = (matrix[0][0] * matrix[1][1] * matrix[3][3]) + (matrix[0][1] * matrix[1][3] * matrix[3][0]) + (matrix[0][3] * matrix[1][0] * matrix[3][1])
+		- (matrix[0][3] * matrix[1][1] * matrix[3][0]) - (matrix[0][1] * matrix[1][0] * matrix[3][3]) - (matrix[0][0] * matrix[1][3] * matrix[3][1]);
+
+	tempMatrix[2][3] = -(matrix[0][0] * matrix[1][1] * matrix[2][3]) - (matrix[0][1] * matrix[1][3] * matrix[2][0]) - (matrix[0][3] * matrix[1][0] * matrix[2][1])
+		+ (matrix[0][3] * matrix[1][1] * matrix[2][0]) + (matrix[0][1] * matrix[1][0] * matrix[2][3]) + (matrix[0][0] * matrix[1][3] * matrix[2][1]);
+
+
+
+	tempMatrix[3][0] = -(matrix[1][0] * matrix[2][1] * matrix[3][2]) - (matrix[1][1] * matrix[2][2] * matrix[3][0]) - (matrix[1][2] * matrix[2][0] * matrix[3][1])
+		+ (matrix[1][2] * matrix[2][1] * matrix[3][0]) + (matrix[1][1] * matrix[2][0] * matrix[3][2]) + (matrix[1][0] * matrix[2][2] * matrix[3][1]);
+
+	tempMatrix[3][1] = (matrix[0][0] * matrix[2][1] * matrix[3][2]) + (matrix[0][1] * matrix[2][2] * matrix[3][0]) + (matrix[0][2] * matrix[2][0] * matrix[3][1])
+		- (matrix[0][2] * matrix[2][1] * matrix[3][0]) - (matrix[0][1] * matrix[2][0] * matrix[3][2]) - (matrix[0][0] * matrix[2][2] * matrix[3][1]);
+
+	tempMatrix[3][2] = -(matrix[0][0] * matrix[1][1] * matrix[3][2]) - (matrix[0][1] * matrix[1][2] * matrix[3][0]) - (matrix[0][2] * matrix[1][0] * matrix[3][1])
+		+ (matrix[0][2] * matrix[1][1] * matrix[3][0]) + (matrix[0][1] * matrix[1][0] * matrix[3][2]) + (matrix[0][0] * matrix[1][2] * matrix[3][1]);
+
+	tempMatrix[3][3] = (matrix[0][0] * matrix[1][1] * matrix[2][2]) + (matrix[0][1] * matrix[1][2] * matrix[2][0]) + (matrix[0][2] * matrix[1][0] * matrix[2][1])
+		- (matrix[0][2] * matrix[1][1] * matrix[2][0]) - (matrix[0][1] * matrix[1][0] * matrix[2][2]) - (matrix[0][0] * matrix[1][2] * matrix[2][1]);
+
+
+*/

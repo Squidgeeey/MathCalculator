@@ -1,4 +1,4 @@
 ﻿  main.cpp
-C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(24,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(52,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(83,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(126,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   MathCalculators.vcxproj -> C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\Debug\MathCalculators.exe
