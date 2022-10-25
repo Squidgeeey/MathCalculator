@@ -28,6 +28,22 @@ int main()
 							5, 0, 3, 2
 	};
 
+	
+
+	for (int i = 0; i < 4; ++i)
+	{
+		for (int j = 0; j < 4; ++j)
+		{
+			float result = 0;
+			for (int k = 0; k < 4; ++k)
+			{
+				result += matrix[i][k] * matrix2[k][j];
+				tempMatrix[i][j] = result;
+			}
+			std::cout << tempMatrix[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
 
 	return 0;
 }
