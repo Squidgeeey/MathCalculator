@@ -17,10 +17,20 @@ void MatrixMultiply(float _MatrixOne[4][4], float _MatrixTwo[4][4]);
 int main()
 {
 
+	float matrixIdentity[4][4] = {
+							1, 0, 0, 0,
+							0, 1, 0, 0,
+							0, 0, 1, 0,
+							0, 0, 0, 1
+	};
+
+
 	std::ifstream MatrixFile;
 	std::string FilePathName;
 	std::string ReadInput;
 	std::string Number;
+
+	float scalar = 0;
 
 	float matrixOne[4][4];
 	float matrixTwo[4][4];
@@ -44,31 +54,80 @@ int main()
 			matrixOne[i][3] = std::stof(Number);
 			
 		}
+
+
+		MatrixFile.ignore(1000, '\n');
+
+		for (int i = 0; i < 4; i++)
+		{
+			std::getline(MatrixFile, Number, ' ');
+			matrixTwo[i][0] = std::stof(Number);
+			std::getline(MatrixFile, Number, ' ');
+			matrixTwo[i][1] = std::stof(Number);
+			std::getline(MatrixFile, Number, ' ');
+			matrixTwo[i][2] = std::stof(Number);
+			std::getline(MatrixFile, Number);
+			matrixTwo[i][3] = std::stof(Number);
+
+		}
+
+		MatrixFile.ignore(1000, '\n');
+
+		std::getline(MatrixFile, Number, ' ');
+		scalar = std::stof(Number);
+
+		std::cout << std::endl << std::endl;
+
+		std::cout << "1) " << std::endl;
+
+		std::cout << MatrixDeterminant(matrixOne) << std::endl;
+
+		std::cout << std::endl << "2) " << std::endl;
+
+		MatrixTranspose(matrixOne);
+
+		std::cout << std::endl << "3) " << std::endl;
+
+		MatrixInverse(matrixOne);
+
+		std::cout << std::endl << "4) " << std::endl;
+
+		MatrixScalar(matrixOne, scalar);
+
+		std::cout << std::endl << "5) " << std::endl;
+
+		MatrixAdd(matrixOne, matrixTwo);
+
+		std::cout << std::endl << "6) " << std::endl;
+
+		MatrixSubtract(matrixOne, matrixTwo);
+
+		std::cout << std::endl << "7) " << std::endl;
+
+		MatrixMultiply(matrixOne, matrixTwo);
+
+		std::cout << std::endl << "8) " << std::endl;
+
+		MatrixMultiply(matrixTwo, matrixOne);
+
+		std::cout << std::endl << "9) " << std::endl;
+
+
+		for (int i = 0; i < 4; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				std::cout << matrixIdentity[i][j] << " ";
+			}
+			std::cout << std::endl;
+		}
 			
 	}
-	
-
-	
-
-
-	float tempMatrix[4][4];
-
-	float matrix[4][4] = { 1, 3, 5, 5,
-						   7, 2, 6, 6,
-						   3, 7, 3, 2,
-						   5, 3, 4, 4
-
-	};
-
-	float matrix2[4][4] = {
-							2, 3, 2, 5,
-							1, 7, 6, 2,
-							3, 0, 1, 4,
-							5, 0, 3, 2
-	};
-
 	return 0;
 }
+
+
+
 
 
 void MatrixMultiply(float _MatrixOne[4][4], float _MatrixTwo[4][4])
@@ -193,14 +252,17 @@ void MatrixInverse(float _Matrix[4][4])
 
 void MatrixScalar(float _Matrix[4][4], float _Scalar)
 {
+
+	float tempMatrix[4][4];
+
 	for (int i = 0; i < 4; i++)
 	{
 		for (int j = 0; j < 4; j++)
 		{
 			float result;
 			result = _Matrix[i][j] * _Scalar;
-			_Matrix[i][j] = result;
-			std::cout << _Matrix[i][j] << " ";
+			tempMatrix[i][j] = result;
+			std::cout << tempMatrix[i][j] << " ";
 		}
 		std::cout << std::endl;
 	}

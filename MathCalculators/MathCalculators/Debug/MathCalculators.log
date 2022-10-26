@@ -1,6 +1,4 @@
 ﻿  main.cpp
-C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(26,8): warning C4101: 'matrixTwo': unreferenced local variable
-C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(54,8): warning C4101: 'tempMatrix': unreferenced local variable
-C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(187,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(226,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(246,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\MathCalculators\main.cpp(288,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   MathCalculators.vcxproj -> C:\Users\jayde\OneDrive\Documents\MathCalculator\MathCalculators\Debug\MathCalculators.exe
