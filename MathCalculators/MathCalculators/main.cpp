@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 void MatrixTranspose(float _Matrix[4][4]);
 int MatrixDeterminant(float _Matrix[4][4]);
@@ -7,11 +10,47 @@ void MatrixScalar(float _Matrix[4][4], float scalar);
 void MatrixInverse(float _Matrix[4][4]);
 void MatrixAdd(float _MatrixOne[4][4], float _MatrixTwo[4][4]);
 void MatrixSubtract(float _MatrixOne[4][4], float _MatrixTwo[4][4]);
+void MatrixMultiply(float _MatrixOne[4][4], float _MatrixTwo[4][4]);
 
 
 
 int main()
 {
+
+	std::ifstream MatrixFile;
+	std::string FilePathName;
+	std::string ReadInput;
+	std::string Number;
+
+	float matrixOne[4][4];
+	float matrixTwo[4][4];
+
+	std::cout << "Please enter the file path: ";
+	std::cin >> FilePathName;
+	MatrixFile.open(FilePathName);
+
+
+	if (MatrixFile.is_open())
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			std::getline(MatrixFile, Number, ' ');
+			matrixOne[i][0] = std::stof(Number);
+			std::getline(MatrixFile, Number, ' ');
+			matrixOne[i][1] = std::stof(Number);
+			std::getline(MatrixFile, Number, ' ');
+			matrixOne[i][2] = std::stof(Number);
+			std::getline(MatrixFile, Number);
+			matrixOne[i][3] = std::stof(Number);
+			
+		}
+			
+	}
+	
+
+	
+
+
 	float tempMatrix[4][4];
 
 	float matrix[4][4] = { 1, 3, 5, 5,
@@ -28,7 +67,13 @@ int main()
 							5, 0, 3, 2
 	};
 
-	
+	return 0;
+}
+
+
+void MatrixMultiply(float _MatrixOne[4][4], float _MatrixTwo[4][4])
+{
+	float tempMatrix[4][4];
 
 	for (int i = 0; i < 4; ++i)
 	{
@@ -37,7 +82,7 @@ int main()
 			float result = 0;
 			for (int k = 0; k < 4; ++k)
 			{
-				result += matrix[i][k] * matrix2[k][j];
+				result += _MatrixOne[i][k] * _MatrixTwo[k][j];
 				tempMatrix[i][j] = result;
 			}
 			std::cout << tempMatrix[i][j] << " ";
@@ -45,7 +90,6 @@ int main()
 		std::cout << std::endl;
 	}
 
-	return 0;
 }
 
 void MatrixAdd(float _MatrixOne[4][4], float _MatrixTwo[4][4])
